@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.moko.lib.loraui'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.moko.lib.loraui"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    viewBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = ['src/main/res']
+        }
+    }
+
+    libraryVariants.all { variant ->
+        if (variant.buildType.name == "release") {
+            // 修改aar名称
+            variant.outputs.all { output ->
+                outputFileName = "loraui_${android.defaultConfig.versionName}.aar"
+            }
+            // 复制aar到指定目录
+            variant.assemble.doLast {
+                variant.outputs.all { output ->
+                    // 输出目录在：项目目录/build/outputs/aar/
+                    def outputPath = [project.rootDir.absolutePath, "build", "outputs", "aar"].join(File.separator)
+                    copy {
+                        from output.outputFile
+                        into outputPath
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+afterEvaluate {
+    android.libraryVariants.each {variant->
+        publishing.publications.create(variant.name,MavenPublication){
+            from components.findByName(variant.name)
+            groupId = 'com.MOKO-Android-Base-Library'
+            artifactId = 'MKLoRaLib'
+            version = '1.0.0'
+        }
+    }
+}
+
+dependencies {
+    api 'androidx.appcompat:appcompat:1.6.1'
+    api 'com.guolindev.permissionx:permissionx:1.7.1'
+    api 'com.github.GrenderG:Toasty:1.4.1'
+    api 'androidx.constraintlayout:constraintlayout:2.1.4'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.3.0'
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+}

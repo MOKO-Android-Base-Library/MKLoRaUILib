@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdk 26
         targetSdk 34
-        versionCode 1
-        versionName "1.0.1"
+        versionCode 2
+        versionName "1.0.2"
     }
 
     buildTypes {
@@ -50,8 +50,8 @@ afterEvaluate {
         publishing.publications.create(variant.name, MavenPublication) {
             from components.findByName(variant.name)
             groupId = 'com.github.MOKO-Android-Base-Library'
-            artifactId = 'MKLoRaLib'
-            version = '1.0.1'
+            artifactId = 'MKLoRaUILib'
+            version = '1.0.2'
         }
     }
 }

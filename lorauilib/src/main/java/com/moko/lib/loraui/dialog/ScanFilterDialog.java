@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.widget.SeekBar;
 
-import com.moko.common.databinding.DialogScanFilterBinding;
+import com.moko.lib.loraui.databinding.DialogScanFilterBinding;
 
 public class ScanFilterDialog extends BaseDialog<DialogScanFilterBinding> {
     private int filterRssi;

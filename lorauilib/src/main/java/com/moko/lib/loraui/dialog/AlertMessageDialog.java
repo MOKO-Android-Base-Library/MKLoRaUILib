@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.moko.common.R;
-import com.moko.common.databinding.DialogAlertBinding;
+import com.moko.lib.loraui.R;
+import com.moko.lib.loraui.databinding.DialogAlertBinding;
 
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;

@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.moko.common.R;
+import com.moko.lib.loraui.R;
 import com.permissionx.guolindev.dialog.RationaleDialogFragment;
 
 import java.util.List;

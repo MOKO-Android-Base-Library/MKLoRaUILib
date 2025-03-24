@@ -8,7 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 
-import com.moko.common.R;
+import com.moko.lib.loraui.R;
 
 import androidx.viewbinding.ViewBinding;
 

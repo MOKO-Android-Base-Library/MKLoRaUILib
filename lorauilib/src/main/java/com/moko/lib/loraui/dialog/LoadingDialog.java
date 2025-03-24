@@ -4,9 +4,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.moko.common.R;
-import com.moko.common.databinding.DialogLoadingBinding;
-import com.moko.common.view.ProgressDrawable;
+import com.moko.lib.loraui.R;
+import com.moko.lib.loraui.databinding.DialogLoadingBinding;
+import com.moko.lib.loraui.view.ProgressDrawable;
 
 import androidx.core.content.ContextCompat;
 

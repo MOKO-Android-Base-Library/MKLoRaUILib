@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.moko.common.R;
+import com.moko.lib.loraui.R;
 
 import androidx.annotation.StyleRes;
 import androidx.fragment.app.DialogFragment;

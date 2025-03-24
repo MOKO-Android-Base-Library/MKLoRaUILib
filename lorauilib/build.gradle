@@ -8,11 +8,10 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.moko.lib.loraui"
         minSdk 26
         targetSdk 34
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
     }
 
     buildTypes {
@@ -33,41 +32,26 @@ android {
         abortOnError false
     }
 
-    sourceSets {
-        main {
-            res.srcDirs = ['src/main/res']
-        }
-    }
-
-    libraryVariants.all { variant ->
-        if (variant.buildType.name == "release") {
-            // 修改aar名称
-            variant.outputs.all { output ->
-                outputFileName = "loraui_${android.defaultConfig.versionName}.aar"
-            }
-            // 复制aar到指定目录
-            variant.assemble.doLast {
-                variant.outputs.all { output ->
-                    // 输出目录在：项目目录/build/outputs/aar/
-                    def outputPath = [project.rootDir.absolutePath, "build", "outputs", "aar"].join(File.separator)
-                    copy {
-                        from output.outputFile
-                        into outputPath
-                    }
-                }
-            }
-        }
-    }
-
 }
 
 afterEvaluate {
-    android.libraryVariants.each {variant->
-        publishing.publications.create(variant.name,MavenPublication){
+//    publishing {
+//        publications {
+//            release(MavenPublication) {
+//                from components.release
+//                groupId = 'com.githu.MOKO-Android-Base-Library'
+//                artifactId = 'MKLoRaLib'
+//                version = '1.0.0'
+//            }
+//        }
+//    }
+
+    android.libraryVariants.each { variant ->
+        publishing.publications.create(variant.name, MavenPublication) {
             from components.findByName(variant.name)
-            groupId = 'com.MOKO-Android-Base-Library'
+            groupId = 'com.github.MOKO-Android-Base-Library'
             artifactId = 'MKLoRaLib'
-            version = '1.0.0'
+            version = '1.0.1'
         }
     }
 }

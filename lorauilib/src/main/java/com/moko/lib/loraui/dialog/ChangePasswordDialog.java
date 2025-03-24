@@ -7,12 +7,12 @@ import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.inputmethod.InputMethodManager;
 
-import com.moko.common.R;
-import com.moko.common.databinding.DialogChangePasswordBinding;
-import com.moko.common.utils.ToastUtils;
+import com.moko.lib.loraui.R;
+import com.moko.lib.loraui.databinding.DialogChangePasswordBinding;
+import com.moko.lib.loraui.utils.ToastUtils;
 
 
-public class ChangePasswordDialog extends com.moko.common.dialog.BaseDialog<DialogChangePasswordBinding> {
+public class ChangePasswordDialog extends BaseDialog<DialogChangePasswordBinding> {
     private final String FILTER_ASCII = "[ -~]*";
 
     private boolean passwordEnable;

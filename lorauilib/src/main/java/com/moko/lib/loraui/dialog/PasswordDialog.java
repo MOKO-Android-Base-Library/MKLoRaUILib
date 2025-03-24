@@ -6,9 +6,9 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.inputmethod.InputMethodManager;
 
-import com.moko.common.R;
-import com.moko.common.databinding.DialogPasswordBinding;
-import com.moko.common.utils.ToastUtils;
+import com.moko.lib.loraui.R;
+import com.moko.lib.loraui.databinding.DialogPasswordBinding;
+import com.moko.lib.loraui.utils.ToastUtils;
 
 public class PasswordDialog extends BaseDialog<DialogPasswordBinding> {
     public static final String TAG = PasswordDialog.class.getSimpleName();

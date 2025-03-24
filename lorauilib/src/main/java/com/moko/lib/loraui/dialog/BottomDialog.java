@@ -4,7 +4,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.moko.common.databinding.DialogBottomBinding;
+
+import com.moko.lib.loraui.databinding.DialogBottomBinding;
 
 import java.util.ArrayList;
 

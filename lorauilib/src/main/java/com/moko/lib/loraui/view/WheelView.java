@@ -17,7 +17,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.moko.common.R;
+import com.moko.lib.loraui.R;
 
 import java.util.ArrayList;
 

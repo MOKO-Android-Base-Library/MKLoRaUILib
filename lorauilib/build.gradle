@@ -11,7 +11,7 @@ android {
         minSdk 26
         targetSdk 34
         versionCode 4
-        versionName "1.0.4"
+        versionName "1.0.6"
     }
 
     buildTypes {
@@ -32,6 +32,13 @@ android {
         abortOnError false
     }
 
+    // 声明发布 release 变体
+    publishing {
+        singleVariant('release') {
+            withSourcesJar() // 可选：与源码包 Task 合并
+        }
+    }
+
 }
 
 // 增加上传源码的task
@@ -41,8 +48,8 @@ task sourceJar(type: Jar) {
 }
 
 publishing {
-    repositories { RepositoryHandler handler ->
-        handler.mavenLocal()  // 发布到默认的 本地maven 仓库 ，路径： USER_HOME/.m2/repository/  或 setting.xml中配置的路径
+    repositories {
+        mavenLocal()
     }
 
     // publications 用于定义发布任务的配置块
@@ -53,12 +60,17 @@ publishing {
             // 这里头是artifacts的配置信息，不填会采用默认的
             groupId = 'com.github.MOKO-Android-Base-Library'
             artifactId = 'MKLoRaUILib'
-            version = '1.0.4'
+            version = '1.0.6'
 
             // 增加上传源码的 task
             artifact sourceJar
             // 必须有这个 否则不会上传AAR包  将bundleReleaseAar任务的单个输出文件作为发布的AAR文件。这样，该AAR文件就会成为 MavenPublication 的 artifact 并进行发布
-            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+//            afterEvaluate { artifact(tasks.getByName("bundleReleaseAar")) }
+
+            afterEvaluate {
+                // 使用 release 变体的组件（自动包含依赖信息）
+                from components.release
+            }
         }
     }
 }
